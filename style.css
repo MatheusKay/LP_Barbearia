@@ -684,6 +684,7 @@ body {
     border: 2px solid #eee;
     border-radius: 2em;
     box-shadow: 0 8px 14px 0 rgba(0,0,0,0.2);
+    user-select: none;
 
     h3 {
         color: #eee;
