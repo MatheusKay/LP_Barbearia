@@ -649,30 +649,23 @@ body {
 
 .section_equipe_contain_cards_card {
     height: 30em;
-}
-
-.section_equipe_contain_cards_card:hover .card_inner {
-    transform: rotateY(180deg);
-    -webkit-transform: rotateY(180deg);
+    transform-style: preserve-3d;
+    transition: transform 0.8s;
 
     .card_flip_back {
-        opacity: 1;
         background-color: rgba(19, 19, 19, .7);
     }
+}
 
-    .card_flip_front {
-        opacity: 0;
-    }
+.section_equipe_contain_cards_card_rotate {
+    transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
 }
 
 .card_inner {
     position: relative;
     width: 100%;
     height: 100%;
-    transform-style: preserve-3d;
-    transition: transform 0.8s;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
 }
 
 .card_flip_front,
@@ -690,11 +683,18 @@ body {
         color: #eee;
         transition: color .5s ease-in-out;
     }
+
+    span {
+        color: #D2B48C;
+        font-weight: 600;
+        text-decoration: underline;
+    }
 }
 
 .card_flip_front {
     border-radius: 2em;
     transition: all .5s;
+    z-index: 2;
 
     img {
         width: 100%;
@@ -705,12 +705,6 @@ body {
         border-radius: 2em;
         object-fit: cover;
         z-index: -2;
-    }
-
-    span {
-        color: #D2B48C;
-        font-weight: 600;
-        text-decoration: underline;
     }
 
     .card_flip_front_overlay {
@@ -727,12 +721,18 @@ body {
     }
 }
 
+.card_flip_front_rotate {
+    opacity: 0;
+}
+
 .card_flip_back {
-    transform: rotateY(180deg);
-    -webkit-transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     border-radius: 2em;
     opacity: 0;
     transition: all .8s;
+    z-index: -2;
 
     h3 {
         margin-bottom: 5%;
@@ -744,6 +744,13 @@ body {
         line-height: 1.6em;
         font-size: 1.1em;
     }
+}
+
+.card_flip_back_rotate {
+    opacity: 1;
+    transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
+    z-index: 2;
 }
 
 .section_equipe_contain_cards_card_meio {
